@@ -38,7 +38,6 @@ const questions = [
 const TestScreen = ({ onBack, stats, setStats }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
   const [testCompleted, setTestCompleted] = useState(false);
 
