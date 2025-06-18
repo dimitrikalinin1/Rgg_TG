@@ -24,21 +24,19 @@ function App() {
     }
   });
 
-  useEffect(() => {
-    // Инициализация Telegram Web App
-    if (window.Telegram?.WebApp) {
-      const tg = window.Telegram.WebApp;
-      tg.ready();
-
-      // Получаем данные пользователя из Telegram
-      if (tg.initDataUnsafe?.user) {
-        setUser({
-          name: `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name || ''}`.trim(),
-          avatar: tg.initDataUnsafe.user.photo_url || user.avatar
-        });
-      }
+ useEffect(() => {
+  if (window.Telegram?.WebApp) {
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    if (tg.initDataUnsafe?.user) {
+      setUser({
+        name: `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name || ''}`.trim(),
+        avatar: tg.initDataUnsafe.user.photo_url || user.avatar
+      });
     }
-  }, []);
+  }
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   const renderScreen = () => {
     switch (currentScreen) {
